@@ -1,0 +1,14 @@
+{
+	"osrm":{
+		"map_data":{
+			"chile":
+			{
+				"url":"http://download.geofabrik.de/south-america/chile-latest.osm.pbf",
+				"checksum":"http://download.geofabrik.de/south-america/chile-latest.osm.pbf.md5"
+			}
+		}
+	},
+  "run_list": [
+    "recipe[myapp]"
+  ]
+}
