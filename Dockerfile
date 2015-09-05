@@ -6,4 +6,6 @@ ADD solo-osrm-data-chile.json /chef/
 
 ADD myapp /chef/cookbooks/myapp
 
-CMD [ "chef-solo", "-c", "/chef/solo.rb", "-j", "/chef/solo-osrm-data-chile.json" ]
+ADD run.sh /opt/
+
+CMD ["/opt/run.sh"]
