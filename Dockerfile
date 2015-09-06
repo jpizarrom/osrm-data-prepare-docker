@@ -13,6 +13,7 @@ ENV OSRM_VERSION 4.7.0
 ENV STORAGE_FLAVOR local
 ENV CHEF_SOLO_JSON_PATH /chef/solo-osrm-data-prepare.json
 ENV REGION chile
+ENV REGION_FILENAME_SUFFIX -latest
 ENV PROFILE bicycle
 
 ADD run.sh /opt/
