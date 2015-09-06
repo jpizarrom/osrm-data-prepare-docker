@@ -17,5 +17,5 @@ docker run \
          -e AWS_S3_BUCKET=... \
          -e AWS_ACCESS_KEY_ID=... \
          -e AWS_SECRET_ACCESS_KEY=... \
-         -d osrm-data-docker
+         -d jpizarrom/osrm-data-prepare-docker
 ```
