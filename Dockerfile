@@ -1,4 +1,4 @@
-FROM jpizarrom/osrm-docker:v4.7.0
+FROM jpizarrom/osrm-docker:v5.2.6
 
 MAINTAINER Juan Pizarro "jpizarrom@gmail.com"
 
@@ -8,7 +8,7 @@ ADD solo-osrm-data-prepare.json /chef/
 
 ADD myapp /chef/cookbooks/myapp
 
-ENV OSRM_VERSION 4.7.0
+ENV OSRM_VERSION 5.2.6
 
 ENV STORAGE_FLAVOR local
 ENV CHEF_SOLO_JSON_PATH /chef/solo-osrm-data-prepare.json
