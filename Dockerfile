@@ -8,8 +8,6 @@ ADD solo-osrm-data-prepare.json /chef/
 
 ADD myapp /chef/cookbooks/myapp
 
-ENV OSRM_VERSION 5.2.6
-
 ENV DATA_COMPRESS bz2
 ENV STORAGE_FLAVOR local
 ENV CHEF_SOLO_JSON_PATH /chef/solo-osrm-data-prepare.json
