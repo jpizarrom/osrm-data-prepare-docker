@@ -18,3 +18,10 @@ ENV PROFILE bicycle
 ADD run.sh /opt/
 
 CMD ["/opt/run.sh"]
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      luarocks \
+      libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN luarocks install luasql-postgres PGSQL_INCDIR=/usr/include/postgresql

@@ -1,0 +1,67 @@
+pgdata:
+  image: "tianon/true"
+  volumes:
+  - /var/lib/postgresql/data
+rabbitdata:
+  image: "tianon/true"
+  volumes:
+  - /var/lib/rabbitmq
+cache:
+  image: "tianon/true"
+  volumes:
+  - /data/cache
+postgis:
+  image: "osm2vectortiles/postgis"
+  volumes_from:
+   - pgdata
+  ports:
+   - "5432"
+import-osm:
+  image: "osm2vectortiles/import-osm"
+  command: ./import-pbf-map.sh
+  volumes:
+   - ./import:/data/import
+   - ./import-pbf-map.sh:/usr/src/app/import-pbf-map.sh
+   - ./mapping.yml:/usr/src/app/mapping.yml
+  # volumes_from:
+  #  - cache
+  links:
+   - postgis:db
+  environment:
+     DIFFS: 'true'
+     # MAPPING_YAML: 'sss'
+
+# import-external:
+#   image: "osm2vectortiles/import-external"
+#   links:
+#   - postgis:db
+# import-labels:
+#   image: "osm2vectortiles/import-external"
+#   command: ./import-labels.sh
+#   links:
+#   - postgis:db
+import-natural-earth:
+  image: "osm2vectortiles/import-external"
+  command: ./import-natural-earth.sh
+  links:
+  - postgis:db
+# import-water:
+#   image: "osm2vectortiles/import-external"
+#   command: ./import-water.sh
+#   links:
+#   - postgis:db
+
+osrmdata:
+  image: "tianon/true"
+  volumes:
+  - /opt/osrm-data
+osrm-data-prepare-docker:
+  image: "jpizarrom/osrm-data-prepare-docker:v5.2.6"
+  command: bash
+  volumes:
+   - ./profiles:/opt/osrm/profiles
+  volumes_from:
+   - cache
+   - osrmdata
+  links:
+   - postgis:db

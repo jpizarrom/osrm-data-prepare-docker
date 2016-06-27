@@ -1,5 +1,4 @@
 #! /bin/bash
-
 set -e
 
 if [[ "$CHEF_SOLO_JSON_PATH" != "" ]]; then

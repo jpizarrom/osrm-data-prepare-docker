@@ -1,0 +1,19 @@
+tables:
+  admin:
+    fields:
+    - name: osm_id
+      type: id
+    - name: geometry
+      type: geometry
+    - key: name
+      name: name
+      type: string
+    - name: type
+      type: mapping_value
+    - key: admin_level
+      name: admin_level
+      type: integer
+    mapping:
+      boundary:
+      - administrative
+    type: polygon
